@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>generator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script src="/hocus_pocus/javascripts/rails.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $('#add_attr_type').live('click', function() {
+          var i = $('#attr_type input').length;
+          $('#attr_type').append('<%= escape_javascript text_field_tag('attr[@]', '', :style => 'width: 50px') %>:<%= escape_javascript(type_select 'type[@]', :class => 'type') %>'.replace(/@/g, i));
+          $('#attr_' + i).focus();
+      })
+    </script>
+  </head>
+  <body>
+    <h1>generate scaffold</h1>
+    <%= form_tag scaffold_generator_path, :remote => true do %>
+      <% if @name.include? '_' %>
+        g scaffold
+        <%= select_tag :name, options_for_select([@name, @name.gsub('_', '/')]) %>
+      <% else %>
+        g scaffold <%= @name %>
+        <%= hidden_field_tag :name, @name %>
+      <% end %>
+      <%= hidden_field_tag :return_path, params[:return_path] %>
+      <span id="attr_type">
+        <%= text_field_tag 'attr[0]', '', :style => 'width: 50px', :autofocus => true %>:<%= type_select 'type[0]', :class => 'type' %>
+      </span>
+      <input type="button" value="add attribute" id="add_attr_type">
+      <br>
+      <%= submit_tag 'generate' %>
+    <% end %>
+  </body>
+</html>
