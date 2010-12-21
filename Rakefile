@@ -15,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "hocus_pocus"
   gem.homepage = "http://github.com/amatsuda/hocus_pocus"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = 'An Isolated Engine that casts a spell on your Rails 3.1 app'
+  gem.description =  'An Isolated Engine that casts a spell on your Rails 3.1 app'
   gem.email = "ronnie@dio.jp"
   gem.authors = ["Akira Matsuda"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
