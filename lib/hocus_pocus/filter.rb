@@ -56,11 +56,6 @@ TEPPAN
 #       insert_text :before, /<\/body>/i, %Q[<script type="text/javascript">alert('hoge!');</script>]
     end
 
-    def add_dialog
-      insert_text :before, /<\/body>/i, %Q[<div id="__test_dialog" class="vader">hello, world</div>]
-#       controller.response.body += 'added by filter'
-    end
-
     def add_buttons
       #FIXME path
       #FIXME use @template somehow?
@@ -72,11 +67,6 @@ TEPPAN
 
       insert_text :before, /<\/body>/i, %Q[<div style="position:absolute; top:0; right: 0;">#{edit_link} | #{spec_link}<br>#{partials}<br>#{spec}</div>]
       Thread.current[HocusPocus::VIEW_FILENAMES] = nil
-    end
-
-    def add_spec_generator
-      insert_text :before, /<\/body>/i, %Q[$('form').live('submit', function() {
-      });]
     end
 
     def add_command_line
