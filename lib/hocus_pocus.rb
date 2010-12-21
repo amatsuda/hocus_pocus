@@ -3,6 +3,8 @@ require 'hocus_pocus/filter'
 
 module HocusPocus
   VIEW_FILENAMES = :__hocus_pocus_view_filenames__
+  EDITOR = :__hocus_pocus_editor__
+  GENERATOR = :__hocus_pocus_generator__
   SPEC = :__hocus_pocus_spec__
 end
 
