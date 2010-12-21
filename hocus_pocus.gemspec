@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
@@ -35,6 +36,7 @@ Gem::Specification.new do |s|
     "app/views/hocus_pocus/generator/index.html.erb",
     "app/views/hocus_pocus/generator/scaffold.js.erb",
     "config/routes.rb",
+    "hocus_pocus.gemspec",
     "lib/hocus_pocus.rb",
     "lib/hocus_pocus/engine.rb",
     "lib/hocus_pocus/filter.rb",
