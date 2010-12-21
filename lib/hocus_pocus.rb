@@ -16,6 +16,7 @@ if Rails.env.development?
   end
 
   class ::ActionController::Base
+    before_filter HocusPocus::Filter
     after_filter HocusPocus::Filter
   end
 
