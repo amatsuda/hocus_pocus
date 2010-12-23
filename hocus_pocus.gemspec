@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{hocus_pocus}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Akira Matsuda"]
-  s.date = %q{2010-12-22}
+  s.date = %q{2010-12-23}
   s.description = %q{An Isolated Engine that casts a spell on your Rails 3.1 app}
   s.email = %q{ronnie@dio.jp}
   s.extra_rdoc_files = [
