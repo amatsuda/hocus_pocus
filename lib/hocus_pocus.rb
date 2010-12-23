@@ -1,14 +1,14 @@
-require 'hocus_pocus/engine'
-require 'hocus_pocus/filter'
-
-module HocusPocus
-  VIEW_FILENAMES = :__hocus_pocus_view_filenames__
-  EDITOR = :__hocus_pocus_editor__
-  GENERATOR = :__hocus_pocus_generator__
-  SPEC = :__hocus_pocus_spec__
-end
-
 if Rails.env.development?
+  require 'hocus_pocus/engine'
+  require 'hocus_pocus/filter'
+
+  module HocusPocus
+    VIEW_FILENAMES = :__hocus_pocus_view_filenames__
+    EDITOR = :__hocus_pocus_editor__
+    GENERATOR = :__hocus_pocus_generator__
+    SPEC = :__hocus_pocus_spec__
+  end
+
   ActiveSupport.on_load(:after_initialize) do
     Rails.application.routes.append do
       mount HocusPocus::Engine, :at => '/'
