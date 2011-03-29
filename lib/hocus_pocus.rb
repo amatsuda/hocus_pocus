@@ -9,11 +9,11 @@ if Rails.env.development?
     SPEC = :__hocus_pocus_spec__
   end
 
-  ActiveSupport.on_load(:after_initialize) do
-    Rails.application.routes.append do
-      mount HocusPocus::Engine, :at => '/'
-    end
-  end
+#   ActiveSupport.on_load(:after_initialize) do
+#     Rails.application.routes.append do
+#       mount HocusPocus::Engine, :at => '/'
+#     end
+#   end
 
   class ::ActionController::Base
     before_filter HocusPocus::Filter
@@ -31,13 +31,5 @@ if Rails.env.development?
         super
       end
     end
-  end
-
-  class ::ActionView::PartialRenderer
-    def render_partial_with_filename_caching
-      (Thread.current[HocusPocus::VIEW_FILENAMES] ||= []) << @template unless @view.controller.is_a?(HocusPocus::EditorController)
-      render_partial_without_filename_caching
-    end
-    alias_method_chain :render_partial, :filename_caching
   end
 end

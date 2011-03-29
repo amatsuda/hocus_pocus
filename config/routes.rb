@@ -1,4 +1,4 @@
-HocusPocus::Engine.routes.draw do
+Rails::Application.routes.draw do
   post '/generator/scaffold', :to => 'generator#scaffold', :as => 'scaffold_generator'
   post '/generator/execute', :to => 'generator#execute', :as => 'execute_generator'
   get '/editor', :to => 'editor#index'
