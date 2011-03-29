@@ -40,8 +40,11 @@ module HocusPocus
   $('form').live('submit', function() {
   var scenario = ["  scenario '#{@controller.action_name.humanize} #{@controller.controller_name.humanize}' do"];
   scenario.push("    visit '" + window.location.href + "'");
-  $(this).find('input[type=text]').each(function() {
+  $(this).find('input[type=text],textarea').each(function() {
     scenario.push("    fill_in '" + $(this).attr('id') + "', :with => '" + $(this).val() + "'");
+  });
+  $(this).find('select').each(function() {
+    scenario.push("    select '" + $(this).val() + "', :from => '" + $(this).attr('id') + "'");
   });
   scenario.push("    click_button '" + $(this).find('input[type=submit]').val() + "'");
   $(this).append('<textarea id="#{HocusPocus::SPEC}" name="#{HocusPocus::SPEC}" style="height: 0px; width: 0px;" />');
