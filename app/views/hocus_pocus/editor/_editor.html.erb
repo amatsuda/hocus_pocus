@@ -4,7 +4,10 @@
   <%= form_tag save_editor_path, :remote => true, :id => HocusPocus::EDITOR do %>
     <%= hidden_field_tag :path, @path %>
     <%= text_area_tag :file, @file, :size => '100x30' %>
-    <%= submit_tag 'save' %>
+    <div align="right">
+      <%= button_to_function 'Hide', "$('#__editor__').hide()" %>&nbsp;
+      <%= submit_tag 'Save!' %>
+    </div>
   <% end %>
 
   <hr>
