@@ -73,7 +73,7 @@ TEPPAN
     end
 
     def add_command_line
-      insert_text :before, /<\/body>/i, %Q[<div style="position:absolute; bottom:0;"><form method="post" action="/generator/execute" data-remote="true"><input type="text" name="command" placeholder="どうする？コマンド" style="width: 512px;" /><input type="submit" name="run" /></form></div>]
+      insert_text :before, /<\/body>/i, %Q[<div style="position:absolute; bottom:0;"><form method="post" action="/generator/execute" data-remote="true"><input type="text" name="command" placeholder="Command?" style="width: 512px;" /><input type="submit" name="run" /></form></div>]
     end
 
     private
