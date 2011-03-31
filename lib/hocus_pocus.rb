@@ -4,6 +4,7 @@ if Rails.env.development?
 
   module HocusPocus
     VIEW_FILENAMES = :__hocus_pocus_view_filenames__
+    CONTAINER = :__hocus_pocus_container__
     EDITOR = :__hocus_pocus_editor__
     GENERATOR = :__hocus_pocus_generator__
     SPEC = :__hocus_pocus_spec__

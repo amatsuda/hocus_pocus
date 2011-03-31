@@ -68,7 +68,7 @@ TEPPAN
       #FIXME more assertions
       spec = %Q[<div class="spec" style="display:none"><pre>#{CGI.unescape(@controller.flash[HocusPocus::SPEC]) + "\n  end" if @controller.flash[HocusPocus::SPEC]}</pre></div>]
 
-      insert_text :before, /<\/body>/i, %Q[<div style="position:absolute; top:0; right: 0; font-size: small;">#{edit_link} | #{spec_link}<br>#{partials}<br>#{spec}</div>]
+      insert_text :before, /<\/body>/i, %Q[<div id="#{HocusPocus::CONTAINER}" style="position:absolute; top:0; right: 0; font-size: small;">#{edit_link} | #{spec_link}<br>#{partials}<br>#{spec}</div>]
       Thread.current[HocusPocus::VIEW_FILENAMES] = nil
     end
 
