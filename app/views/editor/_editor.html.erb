@@ -2,6 +2,7 @@
   <h3>editing <%= @path %>...</h3>
 
   <%= form_tag save_editor_path, :remote => true, :id => HocusPocus::EDITOR do %>
+    <%= hidden_field_tag :_method, 'post' %>
     <%= hidden_field_tag :path, @path %>
     <%= text_area_tag :file, @file, :size => '100x30' %>
     <%= submit_tag 'save' %>
