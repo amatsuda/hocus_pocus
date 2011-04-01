@@ -30,7 +30,7 @@ module HocusPocus
 
     def add_jquery
 #       insert_text :before, /<\/head>/i, '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script><link rel="stylesheet" href="/hocus_pocus/stylesheets/jquery.ui.dialog.css" type="text/css">'
-      insert_text :before, /<\/head>/i, '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>'
+      insert_text :before, /<\/head>/i, '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>'
     end
 
     def add_steak_recorder
