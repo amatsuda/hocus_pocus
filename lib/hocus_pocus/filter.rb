@@ -66,7 +66,7 @@ TEPPAN
       spec_link = %Q[<a href="#" onclick="$(this).closest('div').find('div.spec').toggle();">spec</a>]
       partials = %Q[<div class="partials" style="display:none">#{(Thread.current[HocusPocus::VIEW_FILENAMES] || []).map(&:virtual_path).map {|v| '<a href="/editor?template=' + v + '" data-remote="true">' + v + '</a>'}.join('<br>')}</div>]
       #FIXME more assertions
-      spec = %Q[<div class="spec" style="display:none"><pre>#{CGI.unescape(@controller.flash[HocusPocus::SPEC]) + "\n  end" if @controller.flash[HocusPocus::SPEC]}</pre></div>]
+      spec = %Q[<div class="spec" style="display:none"><pre>#{CGI.unescape(@controller.flash[HocusPocus::SPEC]) + "\n  end" if @controller.flash[HocusPocus::SPEC]}</pre><div align="right"><a href="/spec?_method=delete" data-remote="true" data-method="delete">Clear</a></div></div>]
 
       insert_text :before, /<\/body>/i, %Q[<div id="#{HocusPocus::CONTAINER}" style="position:absolute; top:0; right: 0; font-size: small;">#{edit_link} | #{spec_link}<br>#{partials}<br>#{spec}</div>]
       Thread.current[HocusPocus::VIEW_FILENAMES] = nil
