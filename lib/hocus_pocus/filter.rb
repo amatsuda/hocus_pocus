@@ -14,7 +14,7 @@ module HocusPocus
 #         filter.add_jquery
         filter.add_steak_recorder
 #         filter.add_js
-        unless controller.is_a?(HocusPocus::EditorController) || controller.is_a?(HocusPocus::GeneratorController)
+        unless controller.is_a?(HocusPocus::EditorController) || controller.is_a?(GeneratorController)
           filter.add_buttons
         end
 #         filter.add_command_line
