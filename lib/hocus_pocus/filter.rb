@@ -12,12 +12,12 @@ module HocusPocus
         filter = self.new(controller)
         #FIXME avoid loading jquery twice
 #         filter.add_jquery
-        filter.add_steak_recorder
+        filter.add_steak_recorder if HocusPocus.config.enable_scenario_recorder
 #         filter.add_js
         unless controller.is_a?(HocusPocus::EditorController) || controller.is_a?(HocusPocus::GeneratorController)
           filter.add_buttons
         end
-#         filter.add_command_line
+        filter.add_command_line if HocusPocus.config.enable_command_line
         controller.response.body = filter.body
       end
     end
@@ -60,15 +60,7 @@ TEPPAN
     end
 
     def add_buttons
-      #FIXME path
-      #FIXME use @template somehow?
-      edit_link = %Q[<a href="/editor?template=#{@controller.controller_name}/#{@controller.action_name}" data-remote="true" onclick="$(this).closest('div').find('div.partials').toggle()">edit</a>]
-      spec_link = %Q[<a href="#" onclick="$(this).closest('div').find('div.spec').toggle();">spec</a>]
-      partials = %Q[<div class="partials" style="display:none">#{(Thread.current[HocusPocus::VIEW_FILENAMES] || []).map(&:virtual_path).map {|v| '<a href="/editor?template=' + v + '" data-remote="true">' + v + '</a>'}.join('<br>')}</div>]
-      #FIXME more assertions
-      spec = %Q[<div class="spec" style="display:none"><pre>#{CGI.unescape(@controller.flash[HocusPocus::SPEC]) + "\n  end" if @controller.flash[HocusPocus::SPEC]}</pre><div align="right"><a href="/spec" data-remote="true" data-method="delete">Clear</a></div></div>]
-
-      insert_text :before, /<\/body>/i, %Q[<div id="#{HocusPocus::CONTAINER}" style="position:absolute; top:0; right: 0; font-size: small;">#{edit_link} | #{spec_link}<br>#{partials}<br>#{spec}</div>]
+      insert_text :before, /<\/body>/i, %Q[<div id="#{HocusPocus::CONTAINER}" style="position:absolute; top:0; right: 0; font-size: small;">#{[edit_link, spec_link].compact.join(' | ')}<br>#{partials}<br>#{spec}</div>]
       Thread.current[HocusPocus::VIEW_FILENAMES] = nil
     end
 
@@ -89,6 +81,29 @@ TEPPAN
           pattern
         end
       @body.insert index, new_text
+    end
+
+    def edit_link
+      return nil unless HocusPocus.config.enable_editor
+      #FIXME path
+      #FIXME use @template somehow?
+      %Q[<a href="/editor?template=#{@controller.controller_name}/#{@controller.action_name}" data-remote="true" onclick="$(this).closest('div').find('div.partials').toggle()">edit</a>]
+    end
+
+    def spec_link
+      return nil unless HocusPocus.config.enable_scenario_recorder
+      %Q[<a href="#" onclick="$(this).closest('div').find('div.spec').toggle();">spec</a>]
+    end
+
+    def partials
+      return nil unless HocusPocus.config.enable_editor
+      %Q[<div class="partials" style="display:none">#{(Thread.current[HocusPocus::VIEW_FILENAMES] || []).map(&:virtual_path).map {|v| '<a href="/editor?template=' + v + '" data-remote="true">' + v + '</a>'}.join('<br>')}</div>]
+    end
+
+    def spec
+      return nil unless HocusPocus.config.enable_scenario_recorder
+      #FIXME more assertions
+      %Q[<div class="spec" style="display:none"><pre>#{CGI.unescape(@controller.flash[HocusPocus::SPEC]) + "\n  end" if @controller.flash[HocusPocus::SPEC]}</pre><div align="right"><a href="/spec" data-remote="true" data-method="delete">Clear</a></div></div>]
     end
   end
 end
