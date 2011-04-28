@@ -1,3 +1,5 @@
+require 'hocus_pocus/config'
+
 if Rails.env.development?
   require 'hocus_pocus/engine'
   require 'hocus_pocus/filter'
