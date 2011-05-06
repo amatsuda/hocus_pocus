@@ -10,8 +10,6 @@ module HocusPocus
     def self.after(controller)
       unless controller.request.format.js?
         filter = self.new(controller)
-        #FIXME avoid loading jquery twice
-#         filter.add_jquery
         filter.add_steak_recorder if HocusPocus.config.enable_scenario_recorder
 #         filter.add_js
         unless controller.is_a?(HocusPocus::EditorController) || controller.is_a?(HocusPocus::GeneratorController)
@@ -26,11 +24,6 @@ module HocusPocus
       @controller = controller
       @template = controller.instance_variable_get(:@template)
       @body = controller.response.body
-    end
-
-    def add_jquery
-#       insert_text :before, /<\/head>/i, '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js"></script><link rel="stylesheet" href="/hocus_pocus/stylesheets/jquery.ui.dialog.css" type="text/css">'
-      insert_text :before, /<\/head>/i, '<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>'
     end
 
     def add_steak_recorder
