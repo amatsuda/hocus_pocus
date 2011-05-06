@@ -3,4 +3,4 @@ HocusPocus.configure do |config|
   # config.enable_editor = true
   # config.enable_scenario_recorder = true
   # config.enable_command_line = false
-end if defined? HocusPocus
+end if defined?(HocusPocus) && HocusPocus.respond_to?(:configure)
