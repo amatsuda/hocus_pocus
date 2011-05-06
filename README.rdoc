@@ -1,19 +1,20 @@
 = hocus_pocus
 
-Description goes here.
+See this blog post for the details
+http://blog.dio.jp/2010/12/21/hocus_pocus
+
+
+== Questions, Feedback
+
+Feel free to message me on Github (amatsuda) or Twitter (@a_matsuda)  ☇3☇3☇3
+
 
 == Contributing to hocus_pocus
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+* Fork, fix, then send me a pull request.
+
 
 == Copyright
 
-Copyright (c) 2010 Akira Matsuda. See LICENSE.txt for
+Copyright (c) 2011 Akira Matsuda. See LICENSE.txt for
 further details.
-
