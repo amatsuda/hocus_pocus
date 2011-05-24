@@ -8,7 +8,7 @@ module HocusPocus
     end
 
     def self.after(controller)
-      unless controller.request.format.js?
+      if controller.request.format.html?
         filter = self.new(controller)
         #FIXME avoid loading jquery twice
 #         filter.add_jquery
