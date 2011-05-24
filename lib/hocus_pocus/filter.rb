@@ -8,7 +8,7 @@ module HocusPocus
     end
 
     def self.after(controller)
-      unless controller.request.format.js?
+      if controller.request.format.html?
         filter = self.new(controller)
         filter.add_steak_recorder if HocusPocus.config.enable_scenario_recorder
 #         filter.add_js
