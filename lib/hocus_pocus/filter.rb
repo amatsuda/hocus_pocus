@@ -33,7 +33,7 @@ module HocusPocus
   $('form').live('submit', function() {
   var scenario = ["  scenario '#{@controller.action_name.humanize} #{@controller.controller_name.humanize}' do"];
   scenario.push("    visit '" + window.location.href + "'");
-  $(this).find('input[type=text],textarea').each(function() {
+  $(this).find('input[type=text],input[type=email],input[type=url],input[type=number],input[type=search],textarea').each(function() {
     scenario.push("    fill_in '" + $(this).attr('id') + "', :with => '" + $(this).val() + "'");
   });
   $(this).find('select').each(function() {
