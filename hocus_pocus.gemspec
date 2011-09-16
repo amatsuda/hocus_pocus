@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Akira Matsuda']
   s.email       = ['ronnie@dio.jp']
-  s.homepage    = 'http://github.com/amatsuda/hocus_pocus'
-  s.summary     = 'An Isolated Engine that casts a spell on your Rails 3.1 app'
-  s.description = 'An Isolated Engine that casts a spell on your Rails 3.1 app'
+  s.homepage    = 'https://github.com/amatsuda/hocus_pocus'
+  s.summary     = 'A magical Engine that casts a spell on your Rails 3.1 app'
+  s.description = 'A magical Engine that casts a spell on your Rails 3.1 app'
 
   s.rubyforge_project = 'hocus_pocus'
 
