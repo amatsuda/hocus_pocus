@@ -11,6 +11,6 @@ HocusPocus::Engine.routes.draw do
     delete '/spec', :to => 'spec#destroy'
   end
   if HocusPocus.config.enable_generator
-    get '/:anything', :to => 'generator#index', :constraints => {:anything => /.*/}
+    get '/:anything', :to => 'generator/generator#index', :constraints => {:anything => /.*/}
   end
 end

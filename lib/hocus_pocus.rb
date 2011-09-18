@@ -1,1 +1,2 @@
-require File.join(File.dirname(__FILE__), 'hocus_pocus/railtie')
+require 'hocus_pocus/railtie'
+require 'hocus_pocus/generator/railtie'
