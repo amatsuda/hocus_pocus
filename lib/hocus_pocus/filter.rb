@@ -12,7 +12,7 @@ module HocusPocus
         filter = self.new(controller)
         filter.add_steak_recorder if HocusPocus.config.enable_scenario_recorder
 #         filter.add_js
-        unless controller.is_a?(HocusPocus::EditorController) || controller.is_a?(HocusPocus::GeneratorController)
+        unless controller.class.name.starts_with?('HocusPocus::')
           filter.add_buttons
         end
         filter.add_command_line if HocusPocus.config.enable_command_line

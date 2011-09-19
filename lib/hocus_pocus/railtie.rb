@@ -41,7 +41,7 @@ if Rails.env.development?
 
           class ::ActionView::PartialRenderer
             def render_partial_with_filename_caching
-              (Thread.current[HocusPocus::VIEW_FILENAMES] ||= []) << @template unless @view.controller.is_a?(HocusPocus::EditorController)
+              (Thread.current[HocusPocus::VIEW_FILENAMES] ||= []) << @template unless @view.controller.class.name.starts_with?('HocusPocus::')
               render_partial_without_filename_caching
             end
             alias_method_chain :render_partial, :filename_caching
