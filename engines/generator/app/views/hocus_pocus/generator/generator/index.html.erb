@@ -13,7 +13,7 @@
   </head>
   <body>
     <h1>generate scaffold</h1>
-    <%= form_tag scaffold_generator_path, :remote => true, :id => HocusPocus::GENERATOR do %>
+    <%= form_tag scaffold_generator_path, :remote => true do %>
       <% if @name.include? '_' %>
         g scaffold
         <%= select_tag :name, options_for_select([@name, @name.gsub('_', '/')]) %>
