@@ -31,7 +31,7 @@ module HocusPocus
       private
       def execute_scaffold(name, options)
         cmd = name.include?('/') ? 'nested_scaffold' : 'scaffold'
-        Rails::Generators.configure!
+        Rails::Generators.configure! Rails.application.config.generators
         Rails::Generators.invoke cmd, [name, options], :behavior => :invoke, :destination_root => Rails.root
       end
 
