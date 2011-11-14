@@ -54,7 +54,7 @@ TEPPAN
 
     def add_buttons
       insert_text :before, /<\/body>/i, %Q[<div id="#{HocusPocus::CONTAINER}" style="position:absolute; top:0; right: 0; font-size: small;">#{[edit_link, spec_link].compact.join(' | ')}<br>#{partials}<br>#{spec}</div>]
-      Thread.current[HocusPocus::VIEW_FILENAMES] = nil
+      Thread.current[HocusPocus::Editor::PARTIAL_FILENAMES] = nil
     end
 
     def add_command_line
@@ -90,7 +90,7 @@ TEPPAN
 
     def partials
       return nil unless HocusPocus.config.enable_editor
-      %Q[<div class="partials" style="display:none">#{(Thread.current[HocusPocus::VIEW_FILENAMES] || []).map(&:virtual_path).map {|v| '<a href="/editor?template=' + v + '" data-remote="true">' + v + '</a>'}.join('<br>')}</div>]
+      %Q[<div class="partials" style="display:none">#{(Thread.current[HocusPocus::Editor::PARTIAL_FILENAMES] || []).map(&:virtual_path).map {|v| '<a href="/editor?template=' + v + '" data-remote="true">' + v + '</a>'}.join('<br>')}</div>]
     end
 
     def spec

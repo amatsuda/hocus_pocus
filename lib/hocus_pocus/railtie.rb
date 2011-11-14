@@ -3,10 +3,9 @@ require File.join(File.dirname(__FILE__), 'config')
 
 if Rails.env.development?
   require 'hocus_pocus/engine'
-  require 'hocus_pocus/filter'
+#   require 'hocus_pocus/filter'
 
   module HocusPocus
-    VIEW_FILENAMES = :__hocus_pocus_view_filenames__
     CONTAINER = :__hocus_pocus_container__
     SPEC = :__hocus_pocus_spec__
 
@@ -18,10 +17,10 @@ if Rails.env.development?
           end
         end
         ActiveSupport.on_load(:action_controller) do
-          class ::ActionController::Base
-            before_filter HocusPocus::Filter
-            after_filter HocusPocus::Filter
-          end
+#           class ::ActionController::Base
+#             before_filter HocusPocus::Filter
+#             after_filter HocusPocus::Filter
+#           end
         end
       end
     end
