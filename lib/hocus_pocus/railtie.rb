@@ -6,16 +6,6 @@ if Rails.env.development?
 
   module HocusPocus
     CONTAINER = :__hocus_pocus_container__
-
-    class Railtie < ::Rails::Railtie #:nodoc:
-      initializer 'hocus_pocus' do |app|
-        ActiveSupport.on_load(:after_initialize) do
-          Rails.application.routes.append do
-            mount HocusPocus::Engine, :at => '/'
-          end
-        end
-      end
-    end
   end
 
   require 'hocus_pocus/editor/railtie'
