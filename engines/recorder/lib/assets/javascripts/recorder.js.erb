@@ -1,0 +1,13 @@
+$('form').live('submit', function() {
+  var scenario = ["  scenario 'GENERATED' do"];
+  scenario.push("    visit '" + window.location.href + "'");
+  $(this).find('input[type=text],input[type=email],input[type=url],input[type=number],input[type=search],textarea').each(function() {
+    scenario.push("    fill_in '" + $(this).attr('id') + "', :with => '" + $(this).val() + "'");
+  });
+  $(this).find('select').each(function() {
+    scenario.push("    select '" + $(this).val() + "', :from => '" + $(this).attr('id') + "'");
+  });
+  scenario.push("    click_button '" + $(this).find('input[type=submit]').val() + "'");
+  $(this).append('<textarea id="<%= HocusPocus::Recorder::SPEC %>" name="<%= HocusPocus::Recorder::SPEC %>" style="height: 0px; width: 0px;" />');
+  $('#<%= HocusPocus::Recorder::SPEC %>').val(scenario.join('\n'));
+})
