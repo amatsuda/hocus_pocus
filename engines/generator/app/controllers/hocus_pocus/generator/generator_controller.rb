@@ -30,9 +30,11 @@ module HocusPocus
 
       private
       def execute_scaffold(name, options)
-        cmd = name.include?('/') ? 'nested_scaffold' : 'scaffold'
-        Rails::Generators.configure! Rails.application.config.generators
-        Rails::Generators.invoke cmd, [name, options], :behavior => :invoke, :destination_root => Rails.root
+        overwriting_argv([name, options]) do
+          cmd = name.include?('/') ? 'nested_scaffold' : 'scaffold'
+          Rails::Generators.configure! Rails.application.config.generators
+          Rails::Generators.invoke cmd, [name, options], :behavior => :invoke, :destination_root => Rails.root
+        end
       end
 
       # `rake db:migrate`
@@ -43,6 +45,15 @@ module HocusPocus
             ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
           end
         end
+      end
+
+      # a dirty workaround to make rspec-rails run
+      def overwriting_argv(value, &block)
+        original_argv = ARGV
+        Object.const_set :ARGV, value
+        block.call
+      ensure
+        Object.const_set :ARGV, original_argv
       end
     end
   end
