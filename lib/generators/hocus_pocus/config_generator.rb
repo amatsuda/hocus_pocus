@@ -5,7 +5,7 @@ module HocusPocus
 
       desc <<DESC
 Description:
-    Copies hobus_pocus configuration file to your application's initializer directory.
+    Copies hocus_pocus configuration file to your application's initializer directory.
 DESC
 
       def copy_config_file
