@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dummy</title>
+	<%= stylesheet_link_tag "standard" %>
+	<%= javascript_include_tag :defaults %>
+	<%= csrf_meta_tag %>
+	<!-- temporary styles due to bug #1 -->
+	<style>
+	body { font-family: "Lucida Grande", "Lucida Sans", "Verdana"; font-size: 76%; background: #D5E0E5; text-align: center; }
+	#global {
+		width: 700px; background: white; margin: 0 auto; text-align: left; display: table;
+		border-radius: 7px; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+	}
+	#global .global_container { margin: 20px; display: table; }
+	#footer { margin: 7px; font-size: 0.9em; }
+	#footer a { color: navy; }
+	h1 { margin-top: 0; }
+	p.example {
+		background: #eee; display: block; border: 1px solid #ddd; border-radius: 4px;
+		padding: 15px; color: #666; font-family: "Bitstream Vera Sans Mono", "Monaco", "Courier New", inherit;
+	}
+ 	</style>
+</head>
+<body>
+
+<div id="global">
+	<div class="global_container">
+	<%= yield %>
+	</div>
+</div>
+<div id="footer">
+	<a href="https://github.com/amatsuda/hocus_pocus" target="_blank">hocus_pocus on Github</a>
+	<a href="http://twitter.com/a_matsuda" target="_blank">@a_matsuda on Twitter</a>
+</div>
+</body>
+</html>

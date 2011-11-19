@@ -1,7 +1,7 @@
 require 'rails'
 require 'hocus_pocus/config'
 
-if Rails.env.development?
+if Rails.env.development? || Rails.env.test?
   require 'hocus_pocus/engine'
 
   module HocusPocus

@@ -22,5 +22,8 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ['README.rdoc']
   s.licenses = ['MIT']
 
+  s.add_runtime_dependency 'rails', ['>= 3.0']
   s.add_runtime_dependency 'nested_scaffold', ['>= 0.1.0']
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'sqlite3'
 end
