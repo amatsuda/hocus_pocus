@@ -5,7 +5,7 @@ $('form').live('submit', function() {
     scenario.push("    fill_in '" + $(this).attr('id') + "', :with => '" + $(this).val() + "'");
   });
   $(this).find('select').each(function() {
-    scenario.push("    select '" + $(this).val() + "', :from => '" + $(this).attr('id') + "'");
+    scenario.push("    select '" + $(this).children(':selected').text() + "', :from => '" + $(this).attr('id') + "'");
   });
   scenario.push("    click_button '" + $(this).find('input[type=submit]').val() + "'");
   $(this).append('<textarea id="<%= HocusPocus::Recorder::SPEC %>" name="<%= HocusPocus::Recorder::SPEC %>" style="height: 0px; width: 0px;" />');
