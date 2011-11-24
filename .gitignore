@@ -4,3 +4,4 @@ Gemfile.lock
 pkg/*
 spec/dummy/tmp/
 spec/dummy/log/
+spec/tmp_saved_buffer.rb

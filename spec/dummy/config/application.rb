@@ -3,6 +3,7 @@ require File.expand_path('../boot', __FILE__)
 require "rails/all"
 
 Bundler.require
+require "jquery-rails" # somehow, it's not being loaded from Gemfile. TODO: fix this
 require "hocus_pocus"
 
 module Dummy

@@ -24,6 +24,10 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'rails', ['>= 3.0']
   s.add_runtime_dependency 'nested_scaffold', ['>= 0.1.0']
-  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rack', ['1.3.3']
+  s.add_development_dependency 'rake', ['0.8.7']
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'spork'
+  s.add_development_dependency 'jquery-rails'
   s.add_development_dependency 'sqlite3'
 end
