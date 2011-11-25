@@ -17,7 +17,7 @@ describe HocusPocus::Editor::EditorController do
     it "writes into the file what was sent through post" do
       # creates a file with a default string
       File.open(buffer_file, "w") { |f| f.print "Banzai" }
-      get :save, { :path => buffer_file, :file => final_file_content, :use_route => :hocus_pocus_editor }
+      post :save, { :path => buffer_file, :file => final_file_content, :use_route => :hocus_pocus_editor }
       File.open(buffer_file, "r").read.should == final_file_content
       File.delete buffer_file
     end
