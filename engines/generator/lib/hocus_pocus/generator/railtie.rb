@@ -15,7 +15,7 @@ module HocusPocus
         ActiveSupport.on_load(:action_view) do
           if HocusPocus.config.enable_generator
             class ::ActionView::Base
-              def method_missing(method, args = {}, &blk)
+              def method_missing(method, *args, &blk)
                 if method.to_s =~ /(new_|edit_)?(.*)(_path|_url)\z/
                   # to avoid DoubleRenderError
                   controller.instance_variable_set :@_response_body, nil
