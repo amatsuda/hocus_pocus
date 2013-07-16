@@ -4,7 +4,7 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <script type="text/javascript">
-      $('#add_attr_type').live('click', function() {
+      $(document).on('click', '#add_attr_type', function() {
           var i = $('#attr_type input').length;
           $('#attr_type').append('<%= escape_javascript text_field_tag('attr[@]', '', :style => 'width: 50px') %>:<%= escape_javascript(type_select 'type[@]', :class => 'type') %>'.replace(/@/g, i));
           $('#attr_' + i).focus();
@@ -13,7 +13,7 @@
   </head>
   <body>
     <h1>generate scaffold</h1>
-    <%= form_tag scaffold_generator_path, :remote => true do %>
+    <%= form_tag scaffold_generator_path, :remote => true, :id => 'generator_form' do %>
       <% if @name.include? '_' %>
         g scaffold
         <%= select_tag :name, options_for_select([@name, @name.gsub('_', '/')]) %>

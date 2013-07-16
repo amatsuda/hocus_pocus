@@ -1,4 +1,4 @@
-$('form').live('submit', function() {
+$(document).on('submit', 'form', function() {
   var scenario = ["  scenario 'GENERATED' do"];
   scenario.push("    visit '" + window.location.pathname + "'");
   $(this).find('input[type=text],input[type=email],input[type=url],input[type=number],input[type=search],textarea').each(function() {
