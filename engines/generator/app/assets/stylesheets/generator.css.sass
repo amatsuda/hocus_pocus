@@ -1,8 +1,9 @@
 $black: #444444
 $white: white
-$yellow: #ffff4f
-$button_yellow: #ffff4f
-$background-color: #3aade3
+$yellow: #fffe89
+$button_yellow: #fffe89
+$background-color: rgba(0, 0, 0, 0.6)
+$background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFMzYyQzY2NkU4MTAxMUUyQURCNUY4ODI4NTdDOTEyQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFMzYyQzY2N0U4MTAxMUUyQURCNUY4ODI4NTdDOTEyQiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkRDNEM3RDFERTgwRjExRTJBREI1Rjg4Mjg1N0M5MTJCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkRDNEM3RDFFRTgwRjExRTJBREI1Rjg4Mjg1N0M5MTJCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Uo8+OAAAACFJREFUeNpi+P//vzwQMxDCTAxEglGFeAELlJYnpBAgwADObh41Cq6M2wAAAABJRU5ErkJggg==)
 
 // reset
 
@@ -13,7 +14,7 @@ html, body, p, ul, ol, dl, p, li, dt, dd, tr, td, form, h1, h2
 body
   padding: 20px
   font-size: 16px
-  background: $background-color url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTExMTA1MUYzRUMxMTFFMkJDNjQ4QUM5N0I1ODJDNUMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTExMTA1MjAzRUMxMTFFMkJDNjQ4QUM5N0I1ODJDNUMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDNEZGNDMzQTNFQUExMUUyQkM2NDhBQzk3QjU4MkM1QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1MTExMDUxRTNFQzExMUUyQkM2NDhBQzk3QjU4MkM1QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PolLCroAAAAhSURBVHjaYvj//78KEDMQwkwMRIJRhXgBC5RWIaQQIMAA1wEePzIPm4IAAAAASUVORK5CYII=) repeat top right
+  background: $background-color $background-image repeat top right
   font-family: arial,sans-serif
   color: $black
 
@@ -56,21 +57,21 @@ h1
 =button($button-color: $button_yellow)
   display: block
   color: lighten($black, 8%)
-  font-size: 22px
+  font-size: 20px
   font-weight: bold
-  line-height: 22px
+  line-height: 20px
   text-decoration: none
-  border-radius: 4px
+  border-radius: 6px
   text-shadow: rgba(255, 255, 255, 0.4) 0 1px 0
   padding: 8px 20px
-  border: darken($button-color, 22%) solid 1px
-  box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0 inset, rgba(0, 0, 0, 0.1) 0 1px 0
+  border: darken($button-color, 32%) solid 1px
+  box-shadow: rgba(255, 255, 255, 0.8) 0 1px 0 inset, rgba(0, 0, 0, 0.2) 0 1px 0
   background: linear-gradient($button-color, darken($button-color, 18%))
   cursor: pointer
   &:hover
     background: linear-gradient(darken($button-color, 6%), darken($button-color, 12%))
   &:active
-    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px inset, rgba(255, 255, 255, 0.4) 0 1px 0
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 1px inset, rgba(255, 255, 255, 0.1) 0 1px 0
 
 #generate_submit
   +button
@@ -79,7 +80,7 @@ h1
 .new_attr
   display: block
   background: rgba(0, 0, 0, .1)
-  padding: 8px
+  padding: 8px 12px
   margin: 0 0 6px
   .separator
     display: inline-block
