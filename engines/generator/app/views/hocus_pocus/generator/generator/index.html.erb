@@ -1,33 +1,43 @@
 <html>
   <head>
     <title>generator</title>
+    <%= stylesheet_link_tag 'generator' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <script type="text/javascript">
       $(document).on('click', '#add_attr_type', function() {
           var i = $('#attr_type input').length;
-          $('#attr_type').append('<%= escape_javascript text_field_tag('attr[@]', '', :style => 'width: 50px') %>:<%= escape_javascript(type_select 'type[@]', :class => 'type') %>'.replace(/@/g, i));
+          $('#attr_type').append('<span class="new_attr"><%= escape_javascript text_field_tag('attr[@]', '') %><span class="separator">:</span><%= escape_javascript(type_select 'type[@]', :class => 'type') %></span>'.replace(/@/g, i));
           $('#attr_' + i).focus();
       })
     </script>
   </head>
   <body>
-    <h1>generate scaffold</h1>
-    <%= form_tag scaffold_generator_path, :remote => true, :id => 'generator_form' do %>
-      <% if @name.include? '_' %>
-        g scaffold
-        <%= select_tag :name, options_for_select([@name, @name.gsub('_', '/')]) %>
-      <% else %>
-        g scaffold <%= @name %>
-        <%= hidden_field_tag :name, @name %>
-      <% end %>
-      <%= hidden_field_tag :return_path, params[:return_path] %>
-      <span id="attr_type">
-        <%= text_field_tag 'attr[0]', '', :style => 'width: 50px', :autofocus => true %>:<%= type_select 'type[0]', :class => 'type' %>
-      </span>
-      <input type="button" value="add attribute" id="add_attr_type">
-      <br>
-      <%= submit_tag 'generate' %>
-    <% end %>
+    <div id="container">
+      <div id="generate">
+        <h1>Generate Scaffold</h1>
+        <%= form_tag scaffold_generator_path, :remote => true, :id => 'generator_form' do %>
+          <h2>
+            <% if @name.include? '_' %>
+              g scaffold
+              <%= select_tag :name, options_for_select([@name, @name.gsub('_', '/')]) %>
+            <% else %>
+              g scaffold <%= @name %>
+              <%= hidden_field_tag :name, @name %>
+            <% end %>
+          </h2>
+          <%= hidden_field_tag :return_path, params[:return_path] %>
+          <div id="attrs">
+            <div id="attr_type">
+              <span class="new_attr"><%= text_field_tag 'attr[0]', '', :autofocus => true %><span class="separator">:</span><%= type_select 'type[0]', :class => 'type' %></span>
+            </div>
+            <input type="button" value="add attribute" id="add_attr_type">
+          </div>
+          <div id="action">
+            <%= submit_tag 'Generate', :id => "generate_submit" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </body>
 </html>
