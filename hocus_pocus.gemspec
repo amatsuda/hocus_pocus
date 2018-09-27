@@ -12,8 +12,6 @@ Gem::Specification.new do |s|
   s.summary     = 'A magical Engine that casts a spell on your Rails 3.1 app'
   s.description = 'A magical Engine that casts a spell on your Rails 3.1 app'
 
-  s.rubyforge_project = 'hocus_pocus'
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
