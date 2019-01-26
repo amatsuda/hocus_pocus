@@ -17,7 +17,7 @@ module HocusPocus
         ActiveSupport.on_load(:action_controller) do
           if HocusPocus.config.enable_scenario_recorder
             class ::ActionController::Base
-              before_filter HocusPocus::Recorder::Filter
+              before_action HocusPocus::Recorder::Filter
             end
           end
         end
