@@ -10,13 +10,24 @@ module HocusPocus
       end
 
       def call(env)
-        @app.call(env).tap do |status, headers, body|
-          if body.is_a?(ActionDispatch::Response) && body.request.format.html?
-            if Thread.current[HocusPocus::Editor::VIEW_FILENAME]
-              body.body = insert_text body.body, :after, /<div id="#{HocusPocus::CONTAINER}" .*?>/i, %Q[#{edit_link}#{partials}]
-              Thread.current[HocusPocus::Editor::VIEW_FILENAME] = nil
-            end
+        status, headers, body = @app.call env
+
+        if headers && headers['Content-Type']&.include?('text/html') && (env['REQUEST_PATH'] !~ %r[^/*hocus_pocus/])
+          case body
+          when ActionDispatch::Response, ActionDispatch::Response::RackBody
+            body = body.body
+          when Array
+            body = body[0]
           end
+
+          if Thread.current[HocusPocus::Editor::VIEW_FILENAME]
+            body.body = insert_text body.body, :after, /<div id="#{HocusPocus::CONTAINER}" .*?>/i, %Q[#{edit_link}#{partials}]
+            Thread.current[HocusPocus::Editor::VIEW_FILENAME] = nil
+          end
+
+          [status, headers, [body]]
+        else
+          [status, headers, body]
         end
       end
 

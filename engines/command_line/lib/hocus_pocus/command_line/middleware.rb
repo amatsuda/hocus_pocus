@@ -10,10 +10,21 @@ module HocusPocus
       end
 
       def call(env)
-        @app.call(env).tap do |status, headers, body|
-          if body.is_a?(ActionDispatch::Response) && body.request.format.html?
-            body.body = insert_text body.body, :after, /<div id="#{HocusPocus::CONTAINER}" .*?>/i, command_line_link
+        status, headers, body = @app.call env
+
+        if headers && headers['Content-Type']&.include?('text/html') && (env['REQUEST_PATH'] !~ %r[^/*hocus_pocus/])
+          case body
+          when ActionDispatch::Response, ActionDispatch::Response::RackBody
+            body = body.body
+          when Array
+            body = body[0]
           end
+
+          body.body = insert_text body.body, :after, /<div id="#{HocusPocus::CONTAINER}" .*?>/i, command_line_link
+
+          [status, headers, [body]]
+        else
+          [status, headers, body]
         end
       end
 
