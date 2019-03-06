@@ -21,7 +21,7 @@ module HocusPocus
           end
 
           if Thread.current[HocusPocus::Editor::VIEW_FILENAME]
-            body.body = insert_text body.body, :after, /<div id="#{HocusPocus::CONTAINER}" .*?>/i, %Q[#{edit_link}#{partials}]
+            body.sub!(/<div id="#{HocusPocus::CONTAINER}" .*?>/i) { %Q[#{$~}#{edit_link}#{partials}] }
             Thread.current[HocusPocus::Editor::VIEW_FILENAME] = nil
           end
 

@@ -20,7 +20,7 @@ module HocusPocus
             body = body[0]
           end
 
-          body.body = insert_text body.body, :after, /<div id="#{HocusPocus::CONTAINER}" .*?>/i, command_line_link
+          body.sub!(/<div id="#{HocusPocus::CONTAINER}" .*?>/i) { %Q[#{$~}#{command_line_link}] }
 
           [status, headers, [body]]
         else

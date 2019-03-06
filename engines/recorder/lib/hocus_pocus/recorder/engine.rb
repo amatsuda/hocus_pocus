@@ -8,6 +8,8 @@ module HocusPocus
       initializer 'hocus_pocus.recorder.add middleware' do |app|
         if HocusPocus.config.enable_scenario_recorder
           app.middleware.insert HocusPocus::Middleware, HocusPocus::Recorder::Middleware
+
+          app.config.assets.precompile += %w(recorder.js recorder.css)
         end
       end
     end
