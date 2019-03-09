@@ -7,7 +7,7 @@ hocus_pocus is a gem library which casts a spell on your Rails app and enables y
 (this documentation is copied from an ancient [blog post](https://web.archive.org/web/20120113014943/http://blog.dio.jp/2010/12/21/hocus_pocus)).
 
 
-### 1. request driven generator
+### 1. Request Driven Generator
 
 You, well grounded Railers, always start your development with URL designing, right? You know, that's "the Rails Way". So, as you decide the URL, just put it in your browser's URL window.
 
@@ -25,7 +25,7 @@ When the params are submitted, the engine kicks the scaffold generator on the se
 This is what I meant by "request driven". This idea is strongly inspired by "Ymir" framework, which has been developed by YOKOTA Takehiko (@i_am_skirnir) in Java language. As I took a look at this, I thought, "hey, even Java can do live code generation through browser. Why can't Rails do that?"
 
 
-### 2. view editor
+### 2. View Editor
 
 I guess you're always frustrated that you have to switch between your text editor and browser again and again while developing web apps. This engine magically enables you to edit your view file dynamically on your web browser just like a Wiki by clicking the "edit" button on the top right (this is why this product was previously called "wiki_mode" engine).
 
@@ -36,7 +36,7 @@ Of course you can edit the partials as well.
 ![](doc/assets/hp_editing_partial.png)
 
 
-### 3. url_for missing driven generator
+### 3. url_for-missing Driven Generator
 
 Now, as you edit your view, you probably want to `link_to` or build a `form_for` a resource that does not exist yet, because it's a quite natural way for editing a Wiki. OK, now you can do it that way. Simply add a `link_to` like this, and submit the form.
 
@@ -45,7 +45,7 @@ Now, as you edit your view, you probably want to `link_to` or build a `form_for`
 Then another magic happens here. This time, the engine rescues "url_for missing" as well, and leads you to the generator again.
 
 
-### 4. generating nested resources
+### 4. Generating Nested Resources
 
 As you put a `link_to` a nested resource like `post_comments_path(@post)`,
 
@@ -66,7 +66,7 @@ end
 This is done by another library named [nested_scaffold](https://github.com/amatsuda/nested_scaffold) generator.
 
 
-### 5. Steak (Capybara) recorder
+### 5. Steak (Capybara) Recorder
 
 These days we're getting familiar with writing end-to-end testing in Ruby code. In the test code, we visit a page, `fill_in` text fields, `select` value from drop downs, `click` buttons, and then `assert` values in the page body by operating a virtual browser by Ruby. But, wait. Do you test only by code? Aren't you doing exactly the same thing by hand anyway? And isn't it easier and faster to manipulate the browser than writing Ruby code? So, isn't it nice if an integration test scenario can automatically be generated while you operate your browser? This engine records what you did in your browser,
 
