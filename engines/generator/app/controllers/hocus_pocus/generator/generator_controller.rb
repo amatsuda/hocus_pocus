@@ -40,7 +40,12 @@ module HocusPocus
 
       # `rake db:migrate`
       def migrate
-        ActiveRecord::Migrator.migrate(ActiveRecord::Migrator.migrations_path, ENV["VERSION"] ? ENV["VERSION"].to_i : nil)
+        if defined? ActiveRecord::MigrationContext  # >= 5.2
+          ActiveRecord::Base.connection.migration_context.up(ENV["VERSION"] ? ENV["VERSION"].to_i : nil)
+        else
+          ActiveRecord::Migrator.migrate(ActiveRecord::Migrator.migrations_path, ENV["VERSION"] ? ENV["VERSION"].to_i : nil)
+        end
+
         if ActiveRecord::Base.schema_format == :ruby
           File.open(ENV['SCHEMA'] || "#{Rails.root}/db/schema.rb", "w") do |file|
             ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
