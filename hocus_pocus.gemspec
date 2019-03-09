@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib', 'engines/generator/lib', 'engines/editor/lib', 'engines/recorder/lib', 'engines/command_line/lib']
 
-  s.extra_rdoc_files = ['README.rdoc']
   s.licenses = ['MIT']
 
   s.add_runtime_dependency 'nested_scaffold', ['>= 0.1.0']
