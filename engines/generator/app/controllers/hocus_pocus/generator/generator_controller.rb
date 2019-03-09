@@ -18,7 +18,8 @@ module HocusPocus
       # XHR
       def scaffold
         #FIXME validate params
-        p options = params[:attr].select {|_k, v| v.present?}.map {|k, v| "#{v}:#{params[:type][k]}"}
+        options = []
+        params[:attr].select {|_k, v| v.present?}.each {|k, v| options << "#{v}:#{params[:type][k]}"}
         execute_scaffold params[:name].dup, options
         migrate
         #FIXME notice doesn't appear?
