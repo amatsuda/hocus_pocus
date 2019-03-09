@@ -31,7 +31,7 @@ module HocusPocus
 
       private
       def command_line_link
-        %Q[<a href="#" onclick="$(this).closest('div').find('div.command_line_form').toggle()">cmd</a><div class="command_line_form" style="display:none;"><form method="post" action="/hocus_pocus/command_line/execute" data-remote="true"><input type="text" name="command" placeholder="Command?" style="width: 512px;" /><input type="submit" name="run" /></form></div>]
+        %Q[<a href="#" onclick="$(this).closest('div').find('div.command_line_form').toggle(); return false;">cmd</a><div class="command_line_form" style="display:none;"><form method="post" action="/hocus_pocus/command_line/execute" data-remote="true"><input type="text" name="command" placeholder="Command?" style="width: 512px;" /><input type="submit" name="run" /></form></div>]
       end
     end
   end
