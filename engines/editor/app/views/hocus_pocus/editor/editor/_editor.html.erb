@@ -6,7 +6,7 @@
     <%= hidden_field_tag :path, @path %>
     <%= text_area_tag :file, @file, :size => '100x30' %>
     <div id="actions">
-      <%= button_to_function 'Hide', "$('#__editor__').hide()", :class => "hide" %>
+      <%= tag(:input, type: 'button', value: 'Hide', class: 'hide', onclick: "$('#__editor__').hide()") %>
       <%= submit_tag 'Save!', :class => "save" %>
     </div>
   <% end %>
