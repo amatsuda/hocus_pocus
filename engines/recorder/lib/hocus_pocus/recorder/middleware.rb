@@ -20,6 +20,7 @@ module HocusPocus
             body = body[0]
           end
 
+          body.sub!(/<\/head>/i) { %Q[<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></head>] } unless body =~ /jquery(\.min)?\.js/
           body.sub!(/<\/head>/i) { %Q[<script src="/assets/recorder.js"></script></head>] }
           body.sub!(/<div id="#{HocusPocus::CONTAINER}" .*?>/i) { %Q[#{$~}#{spec_link}#{spec}] }
 

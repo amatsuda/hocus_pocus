@@ -25,6 +25,8 @@ module HocusPocus
             Thread.current[HocusPocus::Editor::VIEW_FILENAME] = nil
           end
 
+          body.sub!(/<\/head>/i) { %Q[<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></head>] } unless body =~ /jquery(\.min)?\.js/
+
           [status, headers, [body]]
         else
           [status, headers, body]
