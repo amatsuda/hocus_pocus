@@ -16,7 +16,7 @@
     <div id="container">
       <div id="generate">
         <h1>Generate Scaffold</h1>
-        <%= form_tag scaffold_generator_path, :remote => true, :id => 'generator_form' do %>
+        <%= form_tag scaffold_generator_path, :remote => true, :id => 'generator_form', authenticity_token: true do %>
           <h2>
             <% if @name.include? '_' %>
               g scaffold
