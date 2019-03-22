@@ -14,9 +14,16 @@ module HocusPocus
     end
 
     module TemplateRendererExtension
-      def render_template(template, layout_name = nil, locals = {})
-        Thread.current[HocusPocus::Editor::VIEW_FILENAME] = template.virtual_path if @view.controller.try(:request).try(:format).try(:html?) && !@view.controller.class.name.starts_with?('HocusPocus::')
-        super
+      if ::ActionView::TemplateRenderer.instance_method(:render_template).arity == 4
+        def render_template(view, template, layout_name, locals)
+          Thread.current[HocusPocus::Editor::VIEW_FILENAME] = template.virtual_path if view.controller.try(:request).try(:format).try(:html?) && !view.controller.class.name.starts_with?('HocusPocus::')
+          super
+        end
+      else
+        def render_template(template, layout_name = nil, locals = {})
+          Thread.current[HocusPocus::Editor::VIEW_FILENAME] = template.virtual_path if @view.controller.try(:request).try(:format).try(:html?) && !@view.controller.class.name.starts_with?('HocusPocus::')
+          super
+        end
       end
     end
 
