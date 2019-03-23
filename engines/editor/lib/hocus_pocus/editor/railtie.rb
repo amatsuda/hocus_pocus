@@ -7,14 +7,21 @@ module HocusPocus
     PARTIAL_FILENAMES = :__hocus_pocus_partial_filenames__
 
     module PartialRendererExtension
-      def render_partial
-        (Thread.current[HocusPocus::Editor::PARTIAL_FILENAMES] ||= []) << @template unless @view.controller.class.name.starts_with?('HocusPocus::')
-        super
+      if ::ActionView::PartialRenderer.instance_method(:render_partial).arity == 2  # Rails 6
+        def render_partial(view, template)
+          (Thread.current[HocusPocus::Editor::PARTIAL_FILENAMES] ||= []) << template unless view.controller.class.name.starts_with?('HocusPocus::')
+          super
+        end
+      else
+        def render_partial
+          (Thread.current[HocusPocus::Editor::PARTIAL_FILENAMES] ||= []) << @template unless @view.controller.class.name.starts_with?('HocusPocus::')
+          super
+        end
       end
     end
 
     module TemplateRendererExtension
-      if ::ActionView::TemplateRenderer.instance_method(:render_template).arity == 4
+      if ::ActionView::TemplateRenderer.instance_method(:render_template).arity == 4  # Rails 6
         def render_template(view, template, layout_name, locals)
           Thread.current[HocusPocus::Editor::VIEW_FILENAME] = template.virtual_path if view.controller.try(:request).try(:format).try(:html?) && !view.controller.class.name.starts_with?('HocusPocus::')
           super
